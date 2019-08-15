@@ -4,7 +4,7 @@ composer.phar
 composer.lock
 package-lock.json
 .DS_Store
-phpunit.xml
+/phpunit.xml
 /.idea
 /.vscode
 .phpunit.result.cache
