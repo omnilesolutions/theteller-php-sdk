@@ -18,7 +18,8 @@ class MobileMoneyTransferTest extends TestCase{
 
         $payload = [
             'amount' => 20,
-            'merchant_id' => 'THE-TELLER-MERCHANT-ID'
+            'merchant_id' => 'THE-TELLER-MERCHANT-ID',
+            'transaction_id' => '223'
         ];
         $mobileMoney = new MobileMoneyTransfer($http);
         $this->assertTrue($mobileMoney->process($payload));

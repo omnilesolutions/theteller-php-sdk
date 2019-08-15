@@ -7,7 +7,7 @@ use TheTeller\Support\Http\HttpClientInterface;
 abstract class Transfer{
 
 
-    const THETELLER_TRANSFER_ENDPOINT = '/v1.1/transaction/process';
+    const THETELLER_TRANSFER_ENDPOINT = 'v1.1/transaction/process';
     const THETELLER_TRANSFER_STATUS_SUCCESSFUL = 'successful';
     const THETELLER_TRANSFER_TYPE_MOBILE_MONEY = 'mobile-money';
     const THETELLER_TRANSFER_TYPE_BANK = 'bank';
@@ -42,6 +42,7 @@ abstract class Transfer{
      * Gets the transfer reason
      *
      * @return string|null
+     * @throws \Exception
      */
     public function getReason()
     {

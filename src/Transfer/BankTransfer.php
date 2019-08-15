@@ -2,7 +2,11 @@
 
 namespace TheTeller\Transfer;
 
+use TheTeller\PadsDigits;
+
 class BankTransfer extends Transfer{
+
+    use PadsDigits;
 
     const THETELLER_BANK_PROCESSING_CODE = '404020';
 
@@ -14,11 +18,13 @@ class BankTransfer extends Transfer{
      */
     public function process($payload)
     {
-        $this->transferResponse = $this->httpClient->post(Transfer::THETELLER_TRANSFER_ENDPOINT, array_merge($payload, [
-            'processing_code' => static::THETELLER_BANK_PROCESSING_CODE,
-            'r-switch' => 'FLT',
-            'account_issuer' => 'GIP'
-        ]));
+        $this->transferResponse = $this->httpClient->post(Transfer::THETELLER_TRANSFER_ENDPOINT, array_merge(
+            $this->pad($payload),[
+                'processing_code' => static::THETELLER_BANK_PROCESSING_CODE,
+                'r-switch' => 'FLT',
+                'account_issuer' => 'GIP',
+            ]
+        ));
 
         return $this->transferResponse['status'] === Transfer::THETELLER_TRANSFER_STATUS_SUCCESSFUL;
     }

@@ -36,9 +36,8 @@ class TheTeller{
      * @param string $username
      * @param string $apiKey
      * @param string $mode
-     * @return void
      */
-    public function _construct(
+    public function __construct(
         $username,
         $apiKey,
         $mode = self::THETELLER_MODE_LIVE

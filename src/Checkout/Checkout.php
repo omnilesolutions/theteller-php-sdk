@@ -2,11 +2,15 @@
 
 namespace TheTeller\Checkout;
 
+use TheTeller\PadsDigits;
 use TheTeller\Support\Http\HttpClientInterface;
 
 class Checkout
 {
-    const THETELLER_CHECKOUT_ENDPOINT = '/checkout/initiate';
+
+    use PadsDigits;
+
+    const THETELLER_CHECKOUT_ENDPOINT = 'checkout/initiate';
     const THETELLER_CHECKOUT_SUCCESS_STATUS = 'success';
     const THETELLER_CHECKOUT_TOKEN_URL = 'checkout_url';
     const THETELLER_CHECKOUT_TOKEN = 'token';
@@ -45,10 +49,10 @@ class Checkout
     {
         $this->tokenResponse = $this->httpClient->post(
             static::THETELLER_CHECKOUT_ENDPOINT,
-            $payload
+            $this->pad($payload)
         );
 
-        return $this->get('status') ===
+        return isset($this->tokenResponse['status']) &&  $this->get('status') ===
         static::THETELLER_CHECKOUT_SUCCESS_STATUS;
     }
 
@@ -83,6 +87,15 @@ class Checkout
      * @return string
      */
     public function getReason(){
+        if(!isset($this->tokenResponse[static::THETELLER_CHECKOUT_REASON])){
+            // We don't have a reason, probably validation error
+            if(!empty($this->tokenResponse)){
+                return array_values($this->tokenResponse)[0][0];
+            }else{
+                return 'Unknown error.';
+            }
+        }
+
         return $this->get(static::THETELLER_CHECKOUT_REASON);
     }
 

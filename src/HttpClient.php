@@ -7,8 +7,8 @@ use TheTeller\Support\Http\HttpClientInterface;
 
 class HttpClient implements HttpClientInterface{
 
-    const THETELLER_TEST_BASE_ENDPOINT = 'https://test.theteller.net';
-    const THETELLER_LIVE_BASE_ENDPOINT = ' https://prod.theteller.net';
+    const THETELLER_TEST_BASE_ENDPOINT = 'https://test.theteller.net/';
+    const THETELLER_LIVE_BASE_ENDPOINT = ' https://prod.theteller.net/';
 
     private static $_mode = TheTeller::THETELLER_MODE_TEST;
 
@@ -28,8 +28,8 @@ class HttpClient implements HttpClientInterface{
     public function __construct($username, $apiKey)
     {
         $this->engine = new Client([
-            'base_uri' => static::testing() ? TheTeller::THETELLER_MODE_TEST :
-            TheTeller::THETELLER_MODE_LIVE,
+            'base_uri' => static::testing() ? static::THETELLER_TEST_BASE_ENDPOINT :
+            static::THETELLER_LIVE_BASE_ENDPOINT,
             'headers' => [
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json',
@@ -48,9 +48,11 @@ class HttpClient implements HttpClientInterface{
      */
     public function post($resourcePath, $payload)
     {
-        $response = $this->engine->post($resourcePath, $payload);
+        $response = $this->engine->post($resourcePath, [
+            'json' => $payload
+        ]);
         if($response->getBody()){
-            return json_decode($response->getBody());
+            return json_decode($response->getBody(), true);
         }
         return null;
     }
@@ -64,7 +66,7 @@ class HttpClient implements HttpClientInterface{
     public function get($resourcePath){
         $response = $this->engine->get($resourcePath);
         if($response->getBody()){
-            return json_decode($response->getBody());
+            return json_decode($response->getBody(), true);
         }
         return null;
     }

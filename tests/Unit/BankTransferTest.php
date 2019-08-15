@@ -18,7 +18,8 @@ class BankTransferTest extends TestCase{
 
         $payload = [
             'amount' => 20,
-            'merchant_id' => 'THE-TELLER-MERCHANT-ID'
+            'merchant_id' => 'THE-TELLER-MERCHANT-ID',
+            'transaction_id' => '223'
         ];
         $transfer = new BankTransfer($http);
         $this->assertTrue($transfer->process($payload));
@@ -44,7 +45,8 @@ class BankTransferTest extends TestCase{
 
         $payload = [
             'amount' => 20,
-            'merchant_id' => $merchantId
+            'merchant_id' => $merchantId,
+            'transaction_id' => '223'
         ];
         $transfer = new BankTransfer($http);
         $transfer->process($payload);
