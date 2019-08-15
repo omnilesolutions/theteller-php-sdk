@@ -141,7 +141,7 @@ try{
 ```
 
 ### Prerequisites
-* PHP 5.3 or above
+* PHP 5.6 or above
 * [curl](https://secure.php.net/manual/en/book.curl.php) and
 [openssl](https://secure.php.net/manual/en/book.openssl.php)
 extensions.
