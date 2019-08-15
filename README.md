@@ -10,7 +10,7 @@ Also, this sdk follows TheTeller documentation [https://www.theteller.net/docume
 This sdk can be installed using [composer](https://getcomposer.org).
 
 ```
-composer require brightantwiboasiako\theteller-php-sdk
+composer require brightantwiboasiako/theteller-php-sdk
 ```
 
 ## Authentication
