@@ -1,6 +1,4 @@
-# theteller-php-sdk
-
-[![Build Status](https://travis-ci.org/brightantwiboasiako/theteller-php-sdk.svg?branch=master)](https://travis-ci.org/brightantwiboasiako/theteller-php-sdk)
+# theteller-php-sdk [![Build Status](https://travis-ci.org/brightantwiboasiako/theteller-php-sdk.svg?branch=master)](https://travis-ci.org/brightantwiboasiako/theteller-php-sdk)
 
 PHP SDK for theteller Payments API
 
