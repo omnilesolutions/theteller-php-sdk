@@ -140,6 +140,12 @@ try{
 
 ```
 
+### Prerequisites
+* PHP 5.3 or above
+* [curl](https://secure.php.net/manual/en/book.curl.php) and
+[openssl](https://secure.php.net/manual/en/book.openssl.php)
+extensions.
+
 ## Contributing
 Contributions are welcome! Please do a PR with any bug-fixes or email me at [brightantwiboasiako@aol.com](mailto:brightantwiboasiako@aol.com) 
 for a long term commitment.
