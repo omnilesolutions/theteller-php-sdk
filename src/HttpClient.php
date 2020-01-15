@@ -44,13 +44,14 @@ class HttpClient implements HttpClientInterface{
      *
      * @param string $resourcePath
      * @param array $payload
+     * @param array $options
      * @return array|mixed|null
      */
-    public function post($resourcePath, $payload)
+    public function post($resourcePath, $payload, $options = [])
     {
-        $response = $this->engine->post($resourcePath, [
+        $response = $this->engine->post($resourcePath, array_merge($options, [
             'json' => $payload
-        ]);
+        ]));
         if($response->getBody()){
             return json_decode($response->getBody(), true);
         }
@@ -61,10 +62,11 @@ class HttpClient implements HttpClientInterface{
      * Sends a get request
      *
      * @param string $resourcePath
+     * @param array $options
      * @return array|mixed|null
      */
-    public function get($resourcePath){
-        $response = $this->engine->get($resourcePath);
+    public function get($resourcePath, $options = []){
+        $response = $this->engine->get($resourcePath, $options);
         if($response->getBody()){
             return json_decode($response->getBody(), true);
         }

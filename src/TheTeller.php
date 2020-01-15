@@ -141,10 +141,13 @@ class TheTeller{
 
     /**
      * @param string $transactionId
+     * @param string $merchantId
      * @return array
      */
-    public function getTransactionStatus(string $transactionId): array{
-        return $this->http->get('v1.1/users/transactions/' . $transactionId . '/status');
+    public function getTransactionStatus(string $transactionId, string $merchantId): array{
+        return $this->http->get('v1.1/users/transactions/' . $transactionId . '/status', [
+            'headers' => ['Merchant-Id' => $merchantId]
+        ]);
     }
 
 }
