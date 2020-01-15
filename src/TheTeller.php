@@ -141,9 +141,9 @@ class TheTeller{
 
     /**
      * @param string $transactionId
-     * @return string
+     * @return array
      */
-    public function getTransactionStatus(string $transactionId): string{
+    public function getTransactionStatus(string $transactionId): array{
         return $this->http->get('users/transactions/' . $transactionId . '/status');
     }
 
