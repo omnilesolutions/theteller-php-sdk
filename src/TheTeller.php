@@ -139,4 +139,12 @@ class TheTeller{
         $this->http = new HttpClient($username, $apiKey);
     }
 
+    /**
+     * @param string $transactionId
+     * @return string
+     */
+    public function getTransactionStatus(string $transactionId): string{
+        return $this->http->get('users/transactions/' . $transactionId . '/status');
+    }
+
 }
