@@ -1,0 +1,30 @@
+{
+  "name": "theteller-php-sdk",
+  "version": "1.0.0",
+  "description": "Theteller payment sdk",
+  "main": "index.js",
+  "scripts": {
+    "test": "gulp test",
+    "watch": "gulp watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brightantwiboasiako/theteller-php-sdk.git"
+  },
+  "keywords": [
+    "theteller",
+    "php",
+    "payments",
+    "ghana"
+  ],
+  "author": "Bright Antwi Boasiako <bright@omnile.com> (omnile.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brightantwiboasiako/theteller-php-sdk/issues"
+  },
+  "homepage": "https://github.com/brightantwiboasiako/theteller-php-sdk#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-phpunit": "^0.26.0"
+  }
+}
