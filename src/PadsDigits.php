@@ -21,4 +21,22 @@ trait PadsDigits{
         ]);
     }
 
+    /**
+     * @param $amount
+     * @param int $digitsLength
+     * @return string
+     */
+    public function padAmount($amount, $digitsLength = 12){
+        return str_pad(100 * (float)$amount, $digitsLength, '0', STR_PAD_LEFT);
+    }
+
+    /**
+     * @param string $transactionId
+     * @param int $digitsLength
+     * @return string
+     */
+    public function padTransactionId(string $transactionId, $digitsLength = 12) {
+        return str_pad($transactionId, $digitsLength, '0', STR_PAD_LEFT);
+    }
+
 }

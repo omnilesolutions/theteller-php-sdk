@@ -147,8 +147,7 @@ class TheTeller{
      * @return array
      */
     public function getTransactionStatus(string $transactionId, string $merchantId): array{
-        $padded = $this->pad(['transaction_id' => $transactionId]);
-        return $this->http->get('v1.1/users/transactions/' . $padded['transaction_id'] . '/status', [
+        return $this->http->get('v1.1/users/transactions/' . $this->padTransactionId($transactionId) . '/status', [
             'headers' => ['Merchant-Id' => $merchantId]
         ]);
     }

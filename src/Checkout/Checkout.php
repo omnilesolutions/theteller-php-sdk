@@ -49,7 +49,10 @@ class Checkout
     {
         $this->tokenResponse = $this->httpClient->post(
             static::THETELLER_CHECKOUT_ENDPOINT,
-            $this->pad($payload)
+            array_merge($payload, [
+                'transaction_id' => $this->padTransactionId($payload['transaction_id']),
+                'amount' => $this->padAmount($payload['amount'])
+            ])
         );
 
         return isset($this->tokenResponse['status']) &&  $this->get('status') ===
