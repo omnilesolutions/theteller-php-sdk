@@ -138,7 +138,27 @@ try{
 }catch(\Exception $e){
     var_dump($e->getMessage()); // The reason for the failure
 }
+```
 
+### Get Transaction Status
+
+```php
+
+// Get the teller instance.
+
+$teller = new TheTeller\TheTeller($username, $apiKey);
+// There is a third argument for mode which is LIVE by default. If you want to
+// use this sdk in test mode, instantiate the teller as
+// $teller = new TheTeller\TheTeller($username, $apiKey, TheTeller\TheTeller::THETELLER_MODE_TEST)
+
+// Get status
+try{
+
+    $response = $teller->getTransactionStatus($transactionId, $merchantId);
+
+}catch(\Exception $e){
+    var_dump($e->getMessage()); // The reason for the failure
+}
 ```
 
 ### Prerequisites
