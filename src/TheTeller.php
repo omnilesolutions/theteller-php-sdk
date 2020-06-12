@@ -10,6 +10,8 @@ use TheTeller\Transfer\Transfer;
 
 class TheTeller{
 
+    use PadsDigits;
+
     const THETELLER_MODE_LIVE = 'live';
     const THETELLER_MODE_TEST = 'test';
 
@@ -145,7 +147,8 @@ class TheTeller{
      * @return array
      */
     public function getTransactionStatus(string $transactionId, string $merchantId): array{
-        return $this->http->get('v1.1/users/transactions/' . $transactionId . '/status', [
+        $padded = $this->pad(['transaction_id' => $transactionId]);
+        return $this->http->get('v1.1/users/transactions/' . $padded['transaction_id'] . '/status', [
             'headers' => ['Merchant-Id' => $merchantId]
         ]);
     }
