@@ -30,7 +30,7 @@ class HttpClient implements HttpClientInterface{
         $this->engine = new Client([
             'base_uri' => static::testing() ? static::THETELLER_TEST_BASE_ENDPOINT :
             static::THETELLER_LIVE_BASE_ENDPOINT,
-            'verify' => getcwd() . '/cacert.pem',
+            'verify' => false,
             'headers' => [
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json',
